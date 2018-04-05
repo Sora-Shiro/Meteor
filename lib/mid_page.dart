@@ -13,9 +13,9 @@ class _MidPageState extends State<MidPage> {
   Widget build(BuildContext context) {
     return new Container(
       child: new Center(
-        child: new Text(
-          "Mid Page"
-        )
+          child: new Text(
+              "Mid Page"
+          )
       ),
     );
   }

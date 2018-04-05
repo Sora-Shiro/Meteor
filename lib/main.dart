@@ -1,7 +1,8 @@
+import 'package:Ryuusei/left_detail.dart';
 import 'package:flutter/material.dart';
-import 'package:meteor/left_page.dart';
-import 'package:meteor/mid_page.dart';
-import 'package:meteor/right_page.dart';
+import 'package:Ryuusei/left_page.dart';
+import 'package:Ryuusei/mid_page.dart';
+import 'package:Ryuusei/right_page.dart';
 
 void main() => runApp(new MyApp());
 
@@ -61,7 +62,6 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   double calculateOpacity(index) {
-    print(_tweenAlpha.value);
     if (_currentIndex == index && _beforeIndex != index) {
       return _curve.value;
     } else if (_currentIndex != index && _beforeIndex == index) {
@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage>
                     opacity: calculateOpacity(0),
                     child: new TickerMode(
                       enabled: _currentIndex == 0,
-                      child: new MaterialApp(home: new LeftPage()),
+                      child: new LeftPage(),
                     )),
               ),
               new Offstage(
@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage>
                     opacity: calculateOpacity(1),
                     child: new TickerMode(
                       enabled: _currentIndex == 1,
-                      child: new MaterialApp(home: new MidPage()),
+                      child: new MidPage(),
                     )),
               ),
               new Offstage(
@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage>
                     opacity: calculateOpacity(2),
                     child: new TickerMode(
                       enabled: _currentIndex == 2,
-                      child: new MaterialApp(home: new RightPage()),
+                      child: new RightPage(),
                     )),
               ),
             ],
@@ -149,5 +149,6 @@ class _MyHomePageState extends State<MyHomePage>
         )
 
     );
+
   }
 }
