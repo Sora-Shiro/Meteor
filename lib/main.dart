@@ -1,8 +1,8 @@
-import 'package:Ryuusei/left_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:Ryuusei/left_page.dart';
 import 'package:Ryuusei/mid_page.dart';
 import 'package:Ryuusei/right_page.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() => runApp(new MyApp());
 
@@ -11,10 +11,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Ryuusei',
-      theme: new ThemeData(
-          brightness: Brightness.dark
-      ),
+      theme: new ThemeData(brightness: Brightness.dark),
       home: new MyHomePage(),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('zh', 'CH'),
+        const Locale('en', 'US'),
+      ],
     );
   }
 }
@@ -22,13 +28,11 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
 
-
   @override
   _MyHomePageState createState() => new _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-    with TickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   int _currentIndex = 1;
   int _beforeIndex = -1;
   AnimationController _animController;
@@ -44,9 +48,7 @@ class _MyHomePageState extends State<MyHomePage>
     _curve = new CurvedAnimation(parent: _animController, curve: Curves.easeIn);
     _tweenAlpha = new Tween(begin: 0.0, end: 1.0).animate(_curve)
       ..addListener(() {
-        setState(() {
-
-        });
+        setState(() {});
       })
       ..addStatusListener((status) {
         setState(() {
@@ -69,7 +71,6 @@ class _MyHomePageState extends State<MyHomePage>
     }
     return 0.0;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -146,9 +147,6 @@ class _MyHomePageState extends State<MyHomePage>
               });
             },
           ),
-        )
-
-    );
-
+        ));
   }
 }

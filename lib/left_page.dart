@@ -1,16 +1,12 @@
 import 'package:Ryuusei/left_detail.dart';
 import 'package:flutter/material.dart';
 
-
 class LeftPage extends StatefulWidget {
-
   @override
   _LeftPageState createState() => new _LeftPageState();
-
 }
 
 class _LeftPageState extends State<LeftPage> with TickerProviderStateMixin {
-
   List _listData;
   int _tapListIndex;
   int _longPressListIndex;
@@ -80,26 +76,20 @@ class _LeftPageState extends State<LeftPage> with TickerProviderStateMixin {
         isThreeLine: false,
         title: new Text(
           data["title_text"],
-          style: new TextStyle(
-              color: Colors.white
-          ),
+          style: new TextStyle(color: Colors.white),
         ),
         subtitle: new Text(
           data["subtitle_text"],
-          style: new TextStyle(
-              color: Colors.white
-          ),
+          style: new TextStyle(color: Colors.white),
         ),
         enabled: true,
         onTap: () {
           setState(() {
             _tapListIndex = index;
-            Navigator.of(context).push(
-                new PageRouteBuilder(
+            Navigator.of(context).push(new PageRouteBuilder(
                   pageBuilder: (_, __, ___) =>
-                  new LeftDetailPage(data["title_text"]),
-                )
-            );
+                      new LeftDetailPage(data["title_text"]),
+                ));
           });
         },
         onLongPress: () {
@@ -109,8 +99,10 @@ class _LeftPageState extends State<LeftPage> with TickerProviderStateMixin {
         },
       );
     } else {
-      return new Divider(
-        color: Colors.white70,
+      return new Container(
+        color: Colors.white,
+        width: double.infinity,
+        height: 0.5,
       );
     }
   }
@@ -120,20 +112,17 @@ class _LeftPageState extends State<LeftPage> with TickerProviderStateMixin {
     return new Container(
         child: new Container(
             child: new CustomScrollView(
-              shrinkWrap: true,
-              slivers: <Widget>[
-                new SliverPadding(
-                    padding: const EdgeInsets.all(20.0),
-                    sliver: new SliverList(
-                      delegate: new SliverChildBuilderDelegate(
-                        generateListItem,
-                        childCount: 2 * _listData.length - 1,
-                      ),
-                    )
-                )
-              ],
-            )
-        )
-    );
+      shrinkWrap: true,
+      slivers: <Widget>[
+        new SliverPadding(
+            padding: const EdgeInsets.all(20.0),
+            sliver: new SliverList(
+              delegate: new SliverChildBuilderDelegate(
+                generateListItem,
+                childCount: 2 * _listData.length - 1,
+              ),
+            ))
+      ],
+    )));
   }
 }
